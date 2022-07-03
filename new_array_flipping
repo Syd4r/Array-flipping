@@ -1,0 +1,41 @@
+size = 5
+matrix = []
+alt_matrix = []
+incre = 1
+def rotate(rorl, matrix):
+    alt_matrix = []
+    for i in range(size):
+        row = []
+        for j in range(size):
+            if rorl == "L":
+                balls = matrix[j][(size - 1) - i]
+            if rorl == "R":
+                balls = matrix[(size-1)-j][i]
+            if rorl == "X":
+                balls = matrix[(size-1)-i][j]
+            if rorl == "Y":
+                balls = matrix[i][(size-1)-j]
+            row.append(balls)
+        alt_matrix.append(row)
+    return alt_matrix
+#create og
+for i in range(size):
+    row = []
+    for j in range(size):
+        row.append(incre)
+        incre += 1
+    matrix.append(row)
+for i in range(size):
+        print(matrix[i])
+#do stuff
+while True:
+    input1 = input("Rotate or Flip?(R or F): ")
+    if input1 == "R":
+        input2 = input("L or R: ")
+    elif input1 == "F":
+        input2 = input("Flip across X or Y: ")
+    else:
+        break
+    matrix = rotate(input2, matrix)
+    for i in range(size):
+        print(matrix[i])
